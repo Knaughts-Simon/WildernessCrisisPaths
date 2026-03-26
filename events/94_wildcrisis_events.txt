@@ -1,0 +1,25 @@
+namespace = wildcrisis
+
+# Remove trampoline perk after granting vanilla ap_become_the_crisis
+country_event = {
+	id = wildcrisis.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		remove_ascension_perk = ap_wildcrisis_become_the_crisis
+		log = "wildcrisis: removed trampoline ap_wildcrisis_become_the_crisis, player now has ap_become_the_crisis"
+	}
+}
+
+# Remove trampoline perk after granting vanilla ap_cosmogenesis
+country_event = {
+	id = wildcrisis.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		remove_ascension_perk = ap_wildcrisis_cosmogenesis
+		log = "wildcrisis: removed trampoline ap_wildcrisis_cosmogenesis, player now has ap_cosmogenesis"
+	}
+}
