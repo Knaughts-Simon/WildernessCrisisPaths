@@ -1,20 +1,26 @@
-# Vanilla ascension perk definitions - DO NOT EDIT ON THIS BRANCH
-# Source: <stellaris_install>/common/ascension_perks/00_ascension_perks.txt
-# Stellaris version: v4.3.2
+# Wilderness Crisis Paths - Trampoline Ascension Perks
+# Based on vanilla definitions from:
+#   <stellaris_install>/common/ascension_perks/00_ascension_perks.txt
+#   Stellaris version: v4.3.2
+#   ap_become_the_crisis: lines 140-259
+#   ap_cosmogenesis:      lines 265-353
 #
-# ap_become_the_crisis: lines 140-259
-# ap_cosmogenesis:      lines 265-353
+# These perks are only visible to Wilderness empires. When selected, they
+# grant the real vanilla perk via add_ascension_perk, then remove themselves
+# via a delayed event so the player ends up with the vanilla perk using
+# exactly one ascension slot.
 
-ap_become_the_crisis = {
+ap_wildcrisis_become_the_crisis = {
 	potential = {
+		is_wilderness_empire = yes
 		has_nemesis = yes
 		NOR = {
 			is_player_crisis = yes
+			has_ascension_perk = ap_become_the_crisis
 			has_ascension_perk = ap_defender_of_the_galaxy
 			has_origin = origin_slavers
 			has_origin = origin_endbringers # No additional crisis for Endbringers
 		}
-		is_wilderness_empire = no
 	}
 
 	possible = {
@@ -70,72 +76,27 @@ ap_become_the_crisis = {
 
 	on_enabled = {
 		hidden_effect = {
-			set_ai_personality = became_the_crisis
-			country_event = { id = timeline.69 } # Timeline Become the crisis
+			add_ascension_perk = ap_become_the_crisis
+			country_event = { id = wildcrisis.1 days = 1 }
 		}
-		activate_crisis_progression = nemesis_path
-	}
-
-	modifier = {
-		refugee_attraction = -0.50
 	}
 
 	ai_weight = {
-		factor = 7.5
-		modifier = {
-			factor = 0
-			NOR = {
-				is_militarist = yes
-				is_xenophobe = yes
-				is_gestalt = yes
-			}
-		}
-		modifier = {
-			factor = 10
-			is_homicidal = yes
-		}
-		modifier = {
-			factor = 2
-			has_tradition = tr_supremacy_finish
-		}
-		modifier = {
-			factor = 0
-			galaxy_percentage < 0.1
-		}
-		modifier = {
-			factor = 0.5
-			is_infernal_empire = yes
-		}
-		modifier = {
-			factor = 2
-			galaxy_percentage > 0.2
-		}
-		modifier = {
-			factor = 0
-			count_playable_country = {
-				count > 1
-				limit = {
-					has_ascension_perk = ap_become_the_crisis
-				}
-			}
-		}
-		modifier = {
-			factor = 0
-			blocks_disruptive_gameplay = yes
-		}
+		factor = 0
 	}
 }
 
-ap_cosmogenesis = {
+ap_wildcrisis_cosmogenesis = {
 	potential = {
+		is_wilderness_empire = yes
 		has_machine_age_dlc = yes
 		NOR = {
 			is_player_crisis = yes
+			has_ascension_perk = ap_cosmogenesis
 			has_ascension_perk = ap_defender_of_the_galaxy
 			has_origin = origin_slavers # No crisis for MSI
 			has_origin = origin_endbringers # No additional crisis for Endbringers
 		}
-		is_wilderness_empire = no
 	}
 
 	possible = {
@@ -159,59 +120,12 @@ ap_cosmogenesis = {
 
 	on_enabled = {
 		hidden_effect = {
-			set_variable = {
-				which = cosmogenesis_world_advanced_logic_produced
-				value = 0
-			}
+			add_ascension_perk = ap_cosmogenesis
+			country_event = { id = wildcrisis.2 days = 1 }
 		}
-		activate_crisis_progression = cosmogenesis_path
-	}
-
-	modifier = {
-		refugee_attraction = -0.50
 	}
 
 	ai_weight = {
-		factor = 7.5
-		modifier = {
-			factor = 0
-			OR = {
-				is_egalitarian = yes
-				is_xenophile = yes
-			}
-		}
-		modifier = {
-			factor = 2
-			has_tradition = tr_discovery_finish
-		}
-		modifier = {
-			factor = 2
-			has_ascension_perk = ap_technological_ascendancy
-		}
-		modifier = {
-			factor = 2
-			has_ascension_perk = ap_enigmatic_engineering
-		}
-		modifier = {
-			factor = 2
-			vassals > 0
-			any_subject = {
-				any_agreement = {
-					has_active_specialization = specialist_scholarium
-				}
-			}
-		}
-		modifier = {
-			factor = 10
-			has_country_flag = whisperers_covenant_confirmed
-		}
-		modifier = {
-			factor = 0
-			galaxy_percentage < 0.1
-		}
-		modifier = {
-			factor = 2
-			galaxy_percentage > 0.2
-		}
+		factor = 0
 	}
 }
