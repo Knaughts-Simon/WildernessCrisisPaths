@@ -7,7 +7,9 @@
 - **Version file**: `<stellaris_install>\launcher-settings.json` (field: `rawVersion`)
 - **Error log**: `%USERPROFILE%\Documents\Paradox Interactive\Stellaris\logs\error.log`
 - **Main branch**: `main`
+- **Vanilla tracking branch**: `vanilla` (exact copies of vanilla APs — do not edit trampoline logic here)
 - **Mod tag format**: `v{mod_version}` (e.g. `v1.0.0`)
+- **Vanilla tag format**: `vanilla-v{stellaris_version}` (e.g. `vanilla-v4.3.2`)
 - **supported_version format**: `v{major}.{minor}.*` (e.g. `v4.3.*`)
 - **File prefix**: `94_wildcrisis`
 - **Namespace**: `wildcrisis`
@@ -29,18 +31,17 @@ This is the full workflow for updating the mod after a Stellaris update. Run it 
 3. Check the current `supported_version` in `descriptor.mod`.
 4. If the major.minor hasn't changed (just a patch bump like 4.2.3 -> 4.2.4), inform the author. They may want to skip the full process and just tag. Ask before continuing.
 
-### Phase 2: Check for Breaking Changes
+### Phase 2: Update Vanilla Branch
 
-5. This mod relies on the following vanilla APIs/triggers. Check whether they still exist in the current Stellaris install:
-   - `is_wilderness_empire` scripted trigger (in `common/scripted_triggers/00_scripted_triggers.txt`)
-   - `is_player_crisis` scripted trigger (in `common/scripted_triggers/05_scripted_triggers_biogenesis.txt`)
-   - `ap_become_the_crisis` ascension perk (in `common/ascension_perks/00_ascension_perks.txt`)
-   - `ap_cosmogenesis` ascension perk (in `common/ascension_perks/00_ascension_perks.txt`)
-   - `add_ascension_perk` effect
-   - `remove_ascension_perk` effect
-   - `activate_crisis_progression` effect (called by the vanilla perks' `on_enabled`)
-6. Search the Stellaris install for these identifiers. If any have been renamed, removed, or changed semantics, flag the author with the details.
-7. If no breaking changes, report that the mod should be compatible as-is.
+5. `git checkout vanilla`
+6. Re-copy the two ascension perks from the Stellaris install into `common/ascension_perks/94_wildcrisis_ascension_perks.txt`. Update the header comment with new Stellaris version and line numbers.
+   - Source: `<stellaris_install>\common\ascension_perks\00_ascension_perks.txt`
+   - Copy `ap_become_the_crisis` and `ap_cosmogenesis` exactly.
+7. Commit: `git commit -am "Vanilla AP update: Stellaris v{stellaris_version}"`
+8. Tag: `git tag vanilla-v{stellaris_version}`
+9. `git checkout main && git merge vanilla`
+10. If merge conflicts: each conflict represents a vanilla change that may need mirroring in the trampoline logic. Resolve carefully — the trampoline `potential`/`possible` blocks should generally track vanilla.
+
 
 ### Phase 3: QA Testing
 
