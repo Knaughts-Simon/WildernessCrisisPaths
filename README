@@ -1,8 +1,33 @@
-Allows Wilderness empires to take more Crisis Paths.
+Wilderness empires are blocked from taking the [b]Become the Crisis[/b] and [b]Cosmogenesis[/b] ascension perks in vanilla. This mod removes that restriction.
+
+[h2]What it does[/h2]
+
+Adds Wilderness-only versions of two crisis ascension perks:
+[list]
+    [*][b]Become the Crisis[/b] (Galactic Nemesis path) — requires Nemesis DLC
+    [*][b]Cosmogenesis[/b] — requires Machine Age DLC
+[/list]
+
+When you select either perk, the mod grants you the real vanilla version behind the scenes. This means:
+[list]
+    [*]All crisis progression, menace objectives, and crisis levels work normally
+    [*]All technologies, buildings, and events tied to the crisis path work normally
+    [*]Only one ascension perk slot is consumed
+    [*]Other empires interact with you as a crisis empire as usual
+[/list]
+
+[b]Galactic Hyperthermia[/b] (Cosmic Storms DLC) is not included. Its terraforming focus conflicts heavily with Wilderness, which also ties deeply into terraforming mechanics.
+
+[h2]Requirements[/h2]
+
+[list]
+    [*]BioGenesis DLC (for the Wilderness origin)
+    [*]Nemesis DLC (for Become the Crisis) and/or Machine Age DLC (for Cosmogenesis)
+[/list]
 
 [h2]Compatibility[/h2]
 
-TODO
+This mod does not override any vanilla files. It should not conflict with any other mod.
 
 [h2]Feedback[/h2]
 
