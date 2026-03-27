@@ -18,6 +18,17 @@ When you select either perk, the mod grants you the real vanilla version behind 
 
 [b]Galactic Hyperthermia[/b] (Cosmic Storms DLC) is not included. Its terraforming focus conflicts heavily with Wilderness, which also ties deeply into terraforming mechanics.
 
+[h2]Feedback[/h2]
+
+Feedback is quite welcome in the comments, but look at Known Issues below, first.
+
+[h2]Known Issues[/h2]
+Since these are minor and/or nontrivial to fix, I have no immediate plans to fix them. Let me know in comments if it particularly irks you.
+
+[list]
+    [*]When you choose the perk, the perk will actually appear in the [b]next[/b] perk slot, leaving a gap. This gap will close in a month.
+[/list]
+
 [h2]Requirements[/h2]
 
 [list]
@@ -28,7 +39,3 @@ When you select either perk, the mod grants you the real vanilla version behind 
 [h2]Compatibility[/h2]
 
 This mod does not override any vanilla files. It should not conflict with any other mod.
-
-[h2]Feedback[/h2]
-
-Feedback is quite welcome in the comments.
