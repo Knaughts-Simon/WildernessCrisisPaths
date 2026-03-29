@@ -26,7 +26,8 @@ Feedback is quite welcome in the comments, but look at Known Issues below, first
 Since these are minor and/or nontrivial to fix, I have no immediate plans to fix them. Let me know in comments if it particularly irks you.
 
 [list]
-    [*]When you choose the perk, the perk will actually appear in the [b]next[/b] perk slot, leaving a gap. This gap will close in a month.
+    [*]When you choose the perk, the perk will actually appear in the [b]next[/b] perk slot, leaving a gap. This gap will close in a day.
+    [*]When you hover over the perk, it will show no effects. A day after you select the perk, the effects will be correct.
 [/list]
 
 [h2]Requirements[/h2]
